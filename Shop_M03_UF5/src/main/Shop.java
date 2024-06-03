@@ -146,7 +146,7 @@ public class Shop {
 		int stock = scanner.nextInt();
 		addProduct(new Product(name, wholesalerPrice, true, stock));
 		}else {
-			System.out.println("Nombre del producto ya existe");
+			System.out.println("El producto ya existe");
 		}
 	}
 
@@ -155,13 +155,13 @@ public class Shop {
 	 */
 	public void addStock() {
 		Scanner scanner = new Scanner(System.in);
-		System.out.print("Seleccione un nombre de producto: ");
+		System.out.print("Seleccione un nombre para el producto: ");
 		String name = scanner.next();
 		Product product = findProduct(name);
 
 		if (product != null) {
 			// ask for stock
-			System.out.print("Seleccione la cantidad a añadir: ");
+			System.out.print("Seleccione la cantidad para añadir: ");
 			Stock = scanner.nextInt();
 			// update stock product
 			product.setStock(product.getStock() + Stock);
@@ -177,7 +177,7 @@ public class Shop {
 	 */
 	private void setExpired() {
 		Scanner scanner = new Scanner(System.in);
-		System.out.print("Seleccione un nombre de producto: ");
+		System.out.print("Seleccione un nombre para el producto: ");
 		String name = scanner.next();
 		Product product = findProduct(name);
 		product.expire();
@@ -192,7 +192,7 @@ public class Shop {
 	 * show all inventory
 	 */
 	public void showInventory() {
-		System.out.println("Contenido actual de la tienda:");
+		System.out.println("Contenido actualizado de la tienda:");
 		for (Product product : inventory) {
 			if (product != null) {
 				System.out.println(product);
@@ -204,16 +204,15 @@ public class Shop {
 	 * make a sale of products to a client
 	 */
 	public void sale() {
-		// ask for client name
+		
 		ArrayList<Product> products = new ArrayList<Product>();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Realizar venta, escribir nombre cliente");
 		String nameClient = sc.nextLine();
-		// sale product until input name is not 0
 		double totalAmount = 0.0;
 		String name = "";	
 		while (!name.equals("0")) {
-			System.out.println("Introduce el nombre del producto, escribir 0 para terminar:");
+			System.out.println("Introduce el nombre del producto o escribir 0 para terminar:");
 			name = sc.nextLine();
 
 			if (name.equals("0")) {
@@ -232,7 +231,7 @@ public class Shop {
 					product.setAvailable(false);
 				}
 				products.add(product);
-				System.out.println("Producto añadido con éxito");
+				System.out.println("Producto añadido correctamente");
 			}
 
 			if (!productAvailable) {
@@ -379,6 +378,9 @@ public class Shop {
 		inventory.remove(product);
 	}
 	
+	
+	//find product method 
+	
 	public boolean alreadyExists(String nombre) {
 		if (findProduct(nombre) != null) {
 			return true;
@@ -388,17 +390,16 @@ public class Shop {
 	}
 	public boolean initSesion() {
 		Scanner scanner = new Scanner (System.in);
-		System.out.println("Introduzca el numero de empleado");
+		System.out.println("Número de empleado");
 		int user = scanner.nextInt();
-		System.out.println("Introduzca la contraseña de empleado");
+		System.out.println("Contraseña de empleado");
 		String password = scanner.next();
 		Employee employee = new Employee(null); 
 		if (employee.login(user, password)){
 			return true;
 		}
 		else {
-		System.out.println("Datos incorrectos");
+		System.out.println("Ups!! Datos incorrectos");
 		return false;
 		}
-	}
-}
+	}}

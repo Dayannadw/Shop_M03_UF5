@@ -1,20 +1,17 @@
 package views;
 
+
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Scanner;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-
 import model.Employee;
-
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
@@ -47,17 +44,18 @@ public class ShopView extends JFrame implements ActionListener, KeyListener{
 	
 	
 
-	
+	/**
+	 * Create the frame.
+	 */
 	public ShopView() {	
-		initializeComponents();
+		ShopView(); // 
 		shop.loadInventory();
 	}
-	
-	public void visualize() {
-		parentFrame.setVisible(false);
-	}
 
-	private void initializeComponents() {
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void ShopView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -101,6 +99,7 @@ public class ShopView extends JFrame implements ActionListener, KeyListener{
 		setFocusable(true);
 		setFocusTraversalKeysEnabled(false); 
 	}
+
 
 	
 	public void actionPerformed(ActionEvent e) {

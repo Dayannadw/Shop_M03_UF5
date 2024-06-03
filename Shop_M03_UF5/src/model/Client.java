@@ -39,3 +39,4 @@ public class Client extends Person implements Payable {
 		this.balance = balance;
 	}
 }
+

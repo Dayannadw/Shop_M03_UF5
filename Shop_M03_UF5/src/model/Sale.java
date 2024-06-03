@@ -58,6 +58,10 @@ public class Sale {
 
 	}
 
+	
+	
+	
+	
 	public LocalDateTime getTime() {
 		return time;
 	}

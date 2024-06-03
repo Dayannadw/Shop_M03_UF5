@@ -22,3 +22,4 @@ public class Amount {
 		return value + currency;
 	}
 }
+

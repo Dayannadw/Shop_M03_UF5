@@ -1,9 +1,10 @@
 package views;
 
 import java.awt.EventQueue;
+
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -11,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-
 import model.Employee;
 import exception.LimitLoginException;
 
@@ -19,22 +19,22 @@ public class LoginView extends JFrame implements ActionListener {
 
     private static final long serialVersionUID = 1L;
     JDialog insertWindow;
-
     JLabel lblNewLabel_1;
     private JButton btnNewButton;
     private JTextField textField;
     private JPasswordField passwordField;
     private JFrame frame;
-
-
     private int loginAttempts = 0;
     private static final int MAX_LOGIN_ATTEMPTS = 3;
 
+    
+    //Main
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
+                try { 
                     LoginView frame = new LoginView();
+                    frame.LoginView();
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -43,11 +43,8 @@ public class LoginView extends JFrame implements ActionListener {
         });
     }
 
-    public LoginView() {
-        initialize();
-    }
-
-    private void initialize() {
+    //longinView to open frame 
+    private void LoginView() {
         frame = new JFrame();
         frame.setBounds(400, 100, 745, 520);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -88,15 +85,15 @@ public class LoginView extends JFrame implements ActionListener {
                 String password = new String(passwordField.getPassword());
                 
                 if (employee.login(employeeNumber, password)) {
-                    System.out.println("FUNCIONANDO");
+                    System.out.println("Funcionaaa :)");
                     this.setVisible(false);
                     ShopView miTienda = new ShopView();
                     miTienda.setVisible(true);
                 } else {
-                    handleFailedLogin("ERROR!!! LA CONTRASEÑA O EL USUARIO INCORRECTO");
+                    handleFailedLogin("UPS! La contraseña o el usuario es incorrecto");
                 }
             } catch (NumberFormatException ex) {
-                handleFailedLogin("ERROR!!! POR FAVOR INDRODUZCA UN NÚMERO VÁLIDO .");
+                handleFailedLogin("UPS! Introduzca un número válido");
             }
         }
     }
@@ -106,9 +103,13 @@ public class LoginView extends JFrame implements ActionListener {
         JOptionPane.showMessageDialog(insertWindow, errorMessage, "Error ", JOptionPane.ERROR_MESSAGE);
         if (loginAttempts >= MAX_LOGIN_ATTEMPTS) {
             JOptionPane.showMessageDialog(insertWindow,
-                    "Se han excedido el número de  intentos de inicio de sesión.",
-                    "Error de Inserción", JOptionPane.ERROR_MESSAGE);
+                    "Ha superado el número de intentos para inicar sesión",
+                    "Error de ingreso", JOptionPane.ERROR_MESSAGE);
             System.exit(1);
+        } else {
+            // Clean textField
+            textField.setText("");
+            passwordField.setText("");
         }
     }
 }

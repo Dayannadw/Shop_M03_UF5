@@ -1,6 +1,8 @@
 package views;
 
 import java.awt.BorderLayout;
+
+
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -43,7 +45,7 @@ public class ProductView extends JDialog implements ActionListener {
 	 */
 
 	int cases = 0;
-
+ 
 	/**
 	 * Create the dialog.
 	 */
@@ -79,10 +81,9 @@ public class ProductView extends JDialog implements ActionListener {
 
 	public void productName() {
 
-		JLabel lblNewLabel = new JLabel("Nombre Producto");
+		JLabel lblNewLabel = new JLabel("Nombre del producto");
 		lblNewLabel.setBounds(50, 45, 110, 16);
 		contentPanel.add(lblNewLabel);
-
 		textField = new JTextField();
 		textField.setBounds(172, 40, 130, 26);
 		contentPanel.add(textField);
@@ -90,7 +91,6 @@ public class ProductView extends JDialog implements ActionListener {
 
 	}
 
-	// Methods for the display
 	public void productStock() {
 		{
 			JLabel lblNewLabel_1 = new JLabel("Stock Producto");
@@ -108,7 +108,7 @@ public class ProductView extends JDialog implements ActionListener {
 
 	public void productPrice() {
 		{
-			JLabel lblNewLabel_1 = new JLabel("Precio Producto");
+			JLabel lblNewLabel_1 = new JLabel("Precio del producto");
 			lblNewLabel_1.setBounds(50, 132, 110, 16);
 			contentPanel.add(lblNewLabel_1);
 		}
@@ -122,13 +122,12 @@ public class ProductView extends JDialog implements ActionListener {
 
 	}
 
-	// Methods to CALL the displays
+	// Call the displays
 	public void addProduct() {
 		productName();
 		productStock();
 		productPrice();
 		cases = 1;
-
 	}
 
 	public void addStock() {
@@ -155,10 +154,10 @@ public class ProductView extends JDialog implements ActionListener {
 
 				if (!shop.alreadyExists(productName)) {
 					shop.addProduct(newProduct);
-					System.out.println("Producto agregado correctamente.");
+					System.out.println("Producto agregado");
 					JOptionPane.showMessageDialog(null, "Producto " + productName + " añadido correctamente");
 				} else {
-					JOptionPane.showMessageDialog(null, "Ya existe el producto " + productName);
+					JOptionPane.showMessageDialog(null, "Ya existe producto " + productName);
 				}
 				break;
 
@@ -177,7 +176,7 @@ public class ProductView extends JDialog implements ActionListener {
 							+ productToAddStock.getStock());
 				} else {
 					JOptionPane.showMessageDialog(null,
-							"No se ha encontrado el producto con nombre " + productNameToAdd);
+							"No se ha encontrado el producto  " + productNameToAdd);
 				}
 
 				break;
@@ -206,3 +205,4 @@ public class ProductView extends JDialog implements ActionListener {
 	}
 
 }
+
